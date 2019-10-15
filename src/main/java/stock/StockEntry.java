@@ -1,6 +1,7 @@
 package stock;
 
 class StockEntry {
+//    comment
     private StockType stockType;
     private int qty;
 

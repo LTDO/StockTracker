@@ -22,9 +22,13 @@ public class StockTracker {
 
         ArrayList<StockEntry> entriesFound = new ArrayList<>();
 
+        for (StockEntry entry: stockList) {
+            if(stockEntryPredicate.test(entry)){
+                entriesFound.add(entry);
+            }
+        }
         return entriesFound;
     }
-
     /**
      * Get the number of entries for a given StockType
      *
@@ -33,16 +37,19 @@ public class StockTracker {
      */
     public int getStockLevel(Predicate<StockEntry> stockEntryPredicate ) {
         int stockLevel = 0;
-        //
+        for (StockEntry entry : stockList){
+            if (stockEntryPredicate.test(entry)){
+                stockLevel += entry.getQty();
+            }
+        }
         return stockLevel;
     }
 
     public int getStockLevel() {
         int stockLevel = 0;
-        //
+        for (StockEntry entry: stockList) {
+            stockLevel += entry.getQty();
+        }
         return stockLevel;
     }
-
-
-
 }
